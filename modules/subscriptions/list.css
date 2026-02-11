@@ -1,0 +1,15 @@
+.select2-dropdown {
+	width: 16rem !important;
+}
+
+.dashify-date-filter,
+.dashify-filters .select2-selection {
+	justify-content: center;
+}
+
+/* WooCommerce itself hides this on the order list and edit pages, so we do it
+for subscription list and edit pages too, as the footer can collide with the
+elements above. */
+#wpfooter {
+	display: none;
+}

@@ -1,0 +1,822 @@
+@import './util.css';
+
+/* -------- Overall -------- */
+
+#wpbody-content {
+	opacity: 0;
+	transition: all 0.2s;
+}
+
+#wpbody-content.show {
+	opacity: 1;
+}
+
+.wrap {
+	margin: 0 auto !important;
+	max-width: 68rem;
+	padding-left: 1.5rem !important;
+	padding-right: 1.5rem !important;
+}
+
+#wpcontent {
+	background-color: #f1f1f1;
+}
+
+.postbox:not(#woocommerce-order-items, #woocommerce-order-notes) {
+	border: 1px solid #e9e9e9;
+	border-radius: 0.75rem !important;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.button:not(#show-settings-link, #contextual-help-link) {
+	background-color: #fff;
+	border: 0 !important;
+	border-radius: 0.5rem !important;
+	box-shadow: var(--light-bevel);
+	color: #303030;
+	font-weight: 550;
+}
+
+.button:hover {
+	background-color: #fafafa !important;
+}
+
+.button:active {
+	line-height: 2px;
+	padding-top: 2px;
+}
+
+.button:active {
+	background-color: #f7f7f7 !important;
+	box-shadow: var(--light-bevel-active) !important;
+}
+
+.button-primary {
+	background: linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, hsla(0, 0%, 100%, .15)), #303030 !important;
+	box-shadow: var(--dark-bevel) !important;
+	color: #fff !important;
+}
+
+.button-primary:hover {
+	background: linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, hsla(0, 0%, 100%, .15)), #1a1a1a !important;
+}
+
+@media screen and (max-width: 782px) {
+	select[name="wc_order_action"] {
+		height: initial !important;
+	}
+
+	button[name="save"] {
+		height: initial !important;
+		margin-bottom: initial !important;
+	}
+}
+
+@media screen and (max-width: 660px) {
+	#dashify-order-top {
+		display: initial !important;
+	}
+
+	#order-action-buttons {
+		margin-top: 2rem;
+		justify-content: center;
+	}
+}
+
+.handle-actions {
+	display: none;
+}
+
+input:not([type=checkbox], [type=submit]),
+select,
+.select2-selection {
+	background-color: #fdfdfd !important;
+	border-radius: 0.5rem !important;
+}
+
+/* Compatibility for TrackShip */
+input.add_inside_tracking_button {
+	background: linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, hsla(0, 0%, 100%, .15)), #303030 !important;
+}
+
+/* -------- Top area (order number, action buttons, etc.) -------- */
+
+.wp-heading-inline,
+.page-title-action {
+	display: none !important;
+}
+
+h2.woocommerce-order-data__heading {
+	font-size: 1.25rem;
+	margin: 0;
+}
+
+button[name="save"] {
+	height: 1.75rem;
+	margin-right: 0.7rem !important;
+	min-height: initial !important;
+	padding: 0 10px !important;
+	line-height: 2.15384615 !important;
+	font-size: 13px !important;
+}
+
+#delete-action {
+	margin-right: 0.7rem;
+	box-sizing: border-box;
+	padding: 0 12px;
+	border-radius: .5rem;
+	height: 28px !important;
+	display: flex;
+	align-items: center;
+	transition: all .1s;
+	background-color: #b64c3a18;
+}
+
+#delete-action:hover {
+	background-color: #b64c3a2d;
+}
+
+#delete-action a {
+	color: #b64c3a;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+div#woocommerce-order-actions {
+	display: none;
+}
+
+select[name="wc_order_action"] {
+	border-radius: 0.5rem !important;
+	height: 28px !important;
+	min-height: unset;
+	width: 7.7rem;
+	display: flex;
+	align-items: center;
+	margin-right: 0.7rem;
+	font-size: 13px;
+	border: none;
+	box-sizing: border-box;
+	padding-left: 12px;
+	padding-top: 0;
+	padding-bottom: 0;
+	color: #303030 !important;
+	background-color: rgb(227, 227, 227) !important;
+	background: #fff url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2220%22%20height%3D%2220%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M5%206l5%205%205-5%202%201-7%207-7-7%202-1z%22%20fill%3D%22%23555%22%2F%3E%3C%2Fsvg%3E) no-repeat right 12px top 57%;
+	background-size: 14px 14px;
+	transition: all .1s;
+}
+
+select[name="wc_order_action"]:hover {
+	background-color: #d4d4d4 !important;
+}
+
+.pagination {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 1.75rem;
+	padding: 0 0.4rem;
+	background-color: #e3e3e3;
+	border: none;
+	transition: all .1s;
+}
+
+.pagination:first-of-type {
+	border-top-left-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+}
+
+.pagination:last-of-type {
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+}
+
+.back-button:hover,
+.pagination:hover {
+	background-color: #d4d4d4 !important;
+}
+
+.pagination:hover .dashify-tooltip:not(:hover) {
+	opacity: 1;
+	pointer-events: all;
+}
+
+#poststuff {
+	padding-top: 1.5rem;
+}
+
+/* -------- Customer information -------- */
+
+#order_data {
+	padding: 1rem;
+}
+
+#order_data h3 {
+	margin-top: 0 !important;
+}
+
+/* Hide date inputs */
+.form-field:has(input[name="order_date"]) {
+	display: none;
+}
+
+label[for="order_status"] {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.5rem;
+	margin-top: -0.5rem;
+}
+
+.wc-order-status {
+	display: flex;
+	flex-direction: column;
+}
+
+.wc-order-status .select2-container {
+	width: 100% !important;
+}
+
+#order_data .order_data_column {
+	width: initial !important;
+	padding: initial !important;
+	float: initial !important;
+}
+
+.order_data_column_container {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.order_data_column:nth-child(1),
+.order_data_column:nth-child(2) {
+	margin-bottom: 1rem;
+}
+
+#order_data p.order_number {
+	font-family: unset !important;
+	font-weight: unset !important;
+	line-height: unset !important;
+	font-size: unset !important;
+}
+
+#order_data .order_data_column .wc-customer-user label a,
+#order_data .order_data_column .wc-order-status label a {
+	float: none !important;
+	margin-left: 0 !important;
+	margin-right: 1rem !important;
+	margin-bottom: 0.5rem;
+}
+
+label[for="customer_user"] {
+	margin-top: 0.5rem;
+}
+
+/* -------- Sidebar -------- */
+
+#poststuff #post-body.columns-2 #side-sortables {
+	width: 378px;
+}
+
+#post-body.columns-2 #postbox-container-1 {
+	margin-right: -398px;
+	width: 378px;
+}
+
+#poststuff #post-body.columns-2 {
+	margin-right: 400px;
+}
+
+/* On smaller screens, go back to the original CSS which stacks everything */
+@media only screen and (max-width: 850px) {
+	#poststuff #post-body.columns-2 #side-sortables {
+		width: auto;
+	}
+
+	#post-body.columns-2 #postbox-container-1 {
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+/* -------- Order items -------- */
+
+#woocommerce-order-items {
+	border: none !important;
+	background-color: transparent;
+	box-shadow: none !important;
+}
+
+.wc-order-totals-items table {
+	min-width: 230px;
+}
+
+.woocommerce_order_items {
+	background: transparent !important;
+	border-collapse: separate;
+	border-radius: 0.75rem;
+	border-spacing: 0;
+	margin-bottom: 1rem;
+}
+
+#order_line_items tr:last-child td:first-child {
+	border-bottom-left-radius: 0.75rem;
+}
+
+#order_line_items tr:last-child td:last-child {
+	border-bottom-right-radius: 0.75rem;
+}
+
+#order_line_items tr:last-child td {
+	border: none !important;
+}
+
+#order_fee_line_items tr:first-child td:first-child,
+#order_shipping_line_items tr:first-child td:first-child,
+#order_refunds tr:first-child td:first-child {
+	border-top-left-radius: 0.75rem;
+}
+
+#order_fee_line_items tr:first-child td:last-child,
+#order_shipping_line_items tr:first-child td:last-child,
+#order_refunds tr:first-child td:last-child {
+	border-top-right-radius: 0.75rem;
+}
+
+#order_fee_line_items tr:last-child td:first-child,
+#order_shipping_line_items tr:last-child td:first-child,
+#order_refunds tr:last-child td:first-child {
+	border-bottom-left-radius: 0.75rem;
+}
+
+#order_fee_line_items tr:last-child td:last-child,
+#order_shipping_line_items tr:last-child td:last-child,
+#order_refunds tr:last-child td:last-child {
+	border-bottom-right-radius: 0.75rem;
+}
+
+#order_fee_line_items tr:first-child td {
+	border-top: 1px solid #f8f8f8 !important;
+}
+
+.woocommerce_order_items tbody:not(:has(*)) {
+	display: none !important;
+}
+
+.woocommerce_order_items tbody:not(:last-child)::after {
+	content: '';
+	display: table-row;
+	height: 1rem;
+}
+
+#woocommerce-order-items .inside,
+.woocommerce_order_items_wrapper {
+	border-radius: 0.75rem !important;
+	background-color: transparent !important;
+}
+
+.woocommerce_order_items thead th {
+	background-color: transparent !important;
+	color: #303030 !important;
+	font-weight: 600 !important;
+}
+
+.woocommerce_order_items tr:not(:last-of-type) {
+	border-bottom: 0.5px solid rgba(200, 200, 200, 0.5);
+}
+
+#order_line_items,
+#order_fee_line_items,
+#order_shipping_line_items,
+#order_refunds,
+#wc-order-totals-items {
+	border-radius: 1rem;
+}
+
+#order_line_items tr,
+#order_fee_line_items tr,
+#order_shipping_line_items tr,
+#order_refunds tr,
+#wc-order-totals-items tr {
+	position: relative;
+}
+
+.wc-order-item-name {
+	text-decoration: none;
+	font-weight: 550;
+	font-size: 13.5px;
+}
+
+#order_line_items tr td,
+#order_fee_line_items tr td,
+#order_shipping_line_items tr td,
+#order_refunds tr td {
+	background-color: white;
+}
+
+.wc-order-edit-line-item {
+	position: relative;
+	width: 1.5rem !important;
+	padding: 0 !important;
+}
+
+.wc-order-edit-line-item-actions {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: fit-content !important;
+	gap: .5rem;
+	inset: 0;
+	left: -0.4rem;
+}
+
+.edit-order-item,
+.delete-order-item,
+.delete_refund {
+	display: block !important;
+	padding-bottom: 0 !important;
+	width: 24px !important;
+	height: 24px !important;
+	border-radius: 12px;
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 0.5px solid rgba(200, 200, 200, 0.5);
+	box-shadow: var(--shadow);
+	line-height: 24px !important;
+	margin-left: 0 !important;
+}
+
+.edit-order-item::before,
+.delete-order-item::before,
+.delete_refund::before {
+	display: block;
+	font-size: 20px !important;
+	line-height: 24px !important;
+}
+
+.woocommerce_order_items thead {
+	background-color: #f7f7f7;
+}
+
+.woocommerce_order_items td {
+	border-top: none !important;
+}
+
+.woocommerce_order_items .thumb {
+	padding-left: 1.5rem !important;
+}
+
+.woocommerce_order_items .line_cost {
+	padding-right: 1.5rem !important;
+}
+
+.wc-order-totals-items {
+	border-top: 1px solid #e9e9e9;
+	border-right: 1px solid #e9e9e9;
+	border-left: 1px solid #e9e9e9;
+	border-radius: 1rem 1rem 0 0;
+	background-color: white !important;
+}
+
+.wc-order-bulk-actions {
+	border-bottom: 1px solid #e9e9e9;
+	border-right: 1px solid #e9e9e9;
+	border-left: 1px solid #e9e9e9;
+}
+
+.wc-order-bulk-actions,
+.wc-order-add-item {
+	border-radius: 0 0 1rem 1rem;
+	background-color: white !important;
+}
+
+.wc-order-refund-items {
+	border-radius: 1rem;
+	background-color: white !important;
+}
+
+/* -------- Screen option and help buttons -------- */
+
+#screen-meta-links {
+	display: flex;
+	float: none;
+	justify-content: flex-end;
+}
+
+label[for='woocommerce-order-actions-hide'] {
+	display: none;
+}
+
+/* -------- Downloadable product permissions -------- */
+
+button.grant_access {
+	margin-top: 0.5rem !important;
+}
+
+/* -------- Custom fields -------- */
+
+#postcustomstuff {
+	margin-top: 0.9rem;
+}
+
+#postcustomstuff table {
+	border-radius: 0.75rem;
+	padding: 0.35rem;
+}
+
+#postcustomstuff thead th {
+	background-color: initial;
+	text-align: left;
+}
+
+#postcustomstuff textarea {
+	height: 1.875rem;
+	padding-top: 0.25rem;
+	border-radius: 0.5rem;
+}
+
+/* Non-HPOS, extra IDs are to override the default WC styles without using !important, as then resizing doesn’t work. */
+#post #postcustom #postcustomstuff #the-list textarea {
+	height: 1.875rem;
+}
+
+@media screen and (max-width: 782px) {
+	#postcustomstuff textarea {
+		/* This is to match the larger inputs that WordPress uses on smaller screens. */
+		height: 2.475rem !important;
+	}
+}
+
+#postcustomstuff > p:has(strong) {
+	margin-bottom: 0.5em;
+}
+
+#postcustomstuff .submit:not(.add-custom-field) {
+	display: flex;
+	gap: 5px;
+	margin-top: 0;
+	margin-bottom: 0.6rem;
+	margin-left: 8px;
+	padding: 0 !important;
+}
+
+#side-sortables #postcustomstuff .submit {
+	gap: 0;
+	margin-left: 0;
+}
+
+#side-sortables #postcustomstuff #newmeta-button {
+	margin: 3px;
+}
+
+.add-custom-field {
+	margin-bottom: 0 !important;
+	margin-left: 0 !important;
+	padding: 8px 0 0 0 !important;
+}
+
+#side-sortables #postcustomstuff .add-custom-field {
+	padding-top: 3px !important;
+}
+
+#post #postcustomstuff table,
+#post #postcustomstuff thead,
+#post #postcustomstuff tbody {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+#post #postcustomstuff thead tr {
+	display: flex;
+	width: 100%;
+}
+
+#post #postcustomstuff thead .left {
+	padding-right: 0 !important;
+	box-sizing: border-box;
+}
+
+#post #postcustomstuff tbody tr {
+	display: flex;
+	margin-bottom: 0.5rem;
+}
+
+#post #postcustomstuff tbody tr td {
+	display: flex;
+}
+
+#post #postcustomstuff tbody tr .left {
+	width: 38%;
+	padding-right: 0 !important;
+	flex-direction: column;
+}
+
+#post #newmeta-button {
+	margin-top: 0;
+	width: fit-content;
+}
+
+#post #side-sortables #postcustomstuff input[type="submit"] {
+	margin-top: 3px !important;
+}
+
+/* Hide a developer-centric note. */
+#order_custom .inside p:last-child,
+#postcustom .inside p:last-child {
+	display: none;
+}
+
+/* -------- Timeline -------- */
+
+div.add_note {
+	background-color: #fff;
+	border: 1px solid #e9e9e9;
+	border-radius: 0.75rem;
+	box-shadow: var(--soft-light-bevel);
+	padding: 1rem !important;
+}
+
+div.add_note p {
+	text-align: right;
+}
+
+textarea#add_order_note {
+	height: initial !important;
+	border: 0;
+}
+
+textarea#add_order_note:focus {
+	border: 0;
+}
+
+label[for="add_order_note"] {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+.grow-wrap {
+	/* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+	display: grid;
+}
+
+.grow-wrap::after {
+	/* Note the weird space! Needed to preventy jumpy behavior */
+	content: attr(data-replicated-value) " ";
+
+	/* This is how textarea text behaves */
+	white-space: pre-wrap;
+
+	/* Hidden from view, clicks, and screen readers */
+	visibility: hidden;
+}
+
+.grow-wrap>textarea {
+	/* You could leave this, but after a user resizes, then it ruins the auto sizing */
+	resize: none;
+
+	/* Firefox shows scrollbar on growth, you can hide like this. */
+	overflow: hidden;
+}
+
+.grow-wrap>textarea,
+.grow-wrap::after {
+	/* Identical styling required!! */
+	border: 1px solid black;
+	padding: 0.5rem;
+	font: inherit;
+
+	/* Place on top of each other */
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+.order_notes .note {
+	display: flex;
+	justify-content: space-between;
+}
+
+.order_notes .note:first-child {
+	margin-top: 3rem;
+}
+
+.order_notes .meta {
+	color: #616161 !important;
+	display: flex;
+	flex-direction: column;
+	text-align: right;
+}
+
+.order_notes .meta .exact-date {
+	border: 0 !important;
+	text-decoration: none !important;
+}
+
+ul.order_notes li .note_content {
+	background-color: #f1f1f1 !important;
+	font-weight: 550;
+}
+
+ul.order_notes li .note_content p {
+	margin-left: -1.428rem !important;
+	padding-left: 2rem !important;
+}
+
+ul.order_notes li .note_content p::before {
+	content: '\2022';
+	color: #000;
+	font-size: 46px;
+	position: absolute;
+	left: -21.5px;
+	top: 24%;
+	transform: translateY(-50%);
+}
+
+ul.order_notes li .note_content::after {
+	display: none !important;
+}
+
+.order_notes {
+	background-color: #f1f1f1;
+	margin-top: 2px;
+	border-left: 3px solid #e3e3e3;
+	margin-left: 1.5rem;
+}
+
+#woocommerce-order-notes .postbox-header {
+	background-color: #f1f1f1;
+	border-bottom: 0;
+}
+
+#woocommerce-order-notes.postbox {
+	background-color: #f1f1f1 !important;
+}
+
+#woocommerce-order-notes {
+	border: 0;
+	box-shadow: none;
+}
+
+/* -------- Notifications -------- */
+
+.dashify-banner-informational {
+	background-color: #e7e7e7;
+	border-radius: 0.75rem;
+	padding: 1rem;
+}
+
+.dashify-banner-informational h2 {
+	margin: 0;
+}
+
+/* -------- WooCommerce Subscriptions -------- */
+
+.woocommerce_subscriptions_related_orders table {
+	border-radius: 0.75rem;
+}
+
+/* Make the price edit fields in RD Order Modifier for WooCommerce look like the
+standard WooCommerce ones. */
+
+.item_cost_incl .split-input {
+	display: inline-block;
+	background: #fff;
+	border: 1px solid #ddd;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+	margin: 1px 0;
+	min-width: 80px;
+	overflow: hidden;
+	line-height: 1em;
+	text-align: right;
+}
+
+.item_cost_incl .input:first-child {
+	border-bottom: 1px dashed #ddd;
+	background: #fff;
+}
+
+.item_cost_incl .input input {
+	width: 100%;
+	box-sizing: border-box;
+	border: 0;
+	box-shadow: none;
+	margin: 0;
+	padding: 0 6px 4px;
+	color: #555;
+	background: 0 0;
+	vertical-align: middle;
+	text-align: right;
+}
+
+.item_cost_incl label {
+	font-size: .75em;
+	padding: 4px 6px 0;
+	color: #555;
+	display: block;
+}
+
+.item_cost_incl .input:first-child input,
+.item_cost_incl .input:first-child label {
+	color: #ccc !important;
+}
